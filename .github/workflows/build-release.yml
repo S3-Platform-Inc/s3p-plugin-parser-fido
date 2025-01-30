@@ -10,16 +10,15 @@ on:
       - "patch*"
     types:
       - closed
-#  push:
-#    branches: [ "main" ]
 
 env:
   PYTHON_VERSION: '3.11.5'
-  PATH_TO_CONFIG: 'src.s3_platform_plugin_template.config'
+  PATH_TO_CONFIG: 'src.s3p_plugin_parser_fido.config'
   CONFIG_FILE: 'config.json'
 
 permissions:
   contents: write
+
 
 jobs:
   generate-and-test:
@@ -45,6 +44,8 @@ jobs:
       run: echo "::set-output name=TAG_NAME::v$(date +'%Y%m%d%H%M%S')"
 
     - name: Create Tag
+      env:
+          GITHUB_TOKEN: ${{ secrets.PLUGIN_RELEASE_TOKEN }}
       run: |
         git tag ${{ steps.get_date.outputs.TAG_NAME }}
         git push origin ${{ steps.get_date.outputs.TAG_NAME }}
@@ -79,3 +80,4 @@ jobs:
         asset_path: './plugin.xml'
         asset_name: 'plugin.xml'
         asset_content_type: application/json
+

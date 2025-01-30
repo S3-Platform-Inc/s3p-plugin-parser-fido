@@ -1,21 +1,25 @@
 [tool.poetry]
-name = "s3-platform-plugin-template"
-version = "0.3.0"
-description = "A repository that provides a pure template to make it easier to create a new plugin project"
-authors = ["CuberHuber, Roman Lupashko <lupashcko.rom@yandex.ru>"]
-readme = "README.md"
+name = "s3p-plugin-parser-fido"
+version = "0.1.1"
+description = "A repository that provides a FIDO Alliance S3Platform Plugin."
+authors = [
+    "S3-Platform-Inc, Roman Lupashko <romal5754@gmail.com>"
+]
+readme = "readme.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-s3p-sdk = "^0.2.7"
+s3p-sdk = "0.2.11"
+feedparser = "^6.0.11"
+python-dateutil = "^2.9.0.post0"
 
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.2.2"
-
-
+pytest-timeout = "^2.3.1"# Possible Selenium content here
 [tool.poetry.group.optionally.dependencies]
 selenium = "4.15.2"
+
 
 [build-system]
 requires = ["poetry-core"]

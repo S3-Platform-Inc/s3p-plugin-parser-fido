@@ -1,3 +1,4 @@
+
 name: Sync plugin to S3
 
 on:
@@ -35,3 +36,4 @@ jobs:
         MIRROR_SOURCE: './_temp_upload_files'
       with:
         args: --overwrite --remove
+
