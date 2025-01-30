@@ -1,3 +1,4 @@
+
 name: Test Plugin
 
 on:
@@ -38,3 +39,4 @@ jobs:
       - name: Run payload tests
         run: |
           poetry run pytest -v -m payload_set
+
