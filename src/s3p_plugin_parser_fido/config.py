@@ -10,9 +10,6 @@ from s3p_sdk.plugin.config import (
     payload, RestrictionsConfig
 )
 from s3p_sdk.plugin.types import SOURCE
-from s3p_sdk.module import (
-    WebDriver,
-)
 
 config = PluginConfig(
     plugin=CoreConfig(
@@ -48,7 +45,14 @@ config = PluginConfig(
         entry=payload.entry.EntryConfig(
             method='content',
             params=[
-                payload.entry.ModuleParamConfig(key='web_driver', module_name=WebDriver, bus=True),
+                payload.entry.ConstParamConfig('rss_only', True),
+                payload.entry.ConstParamConfig('feeds', [
+                    'https://fidoalliance.org/content/fido-news-center/feed',
+                    'https://fidoalliance.org/content/case-study/feed',
+                    'https://fidoalliance.org/content/fido-in-the-news/feed',
+                    'https://fidoalliance.org/content/presentation/feed',
+                    'https://fidoalliance.org/content/white-paper/feed',
+                ]),
             ] # Подробнее можно почитать [тут](./readme.md#пример-конфигурации-параметров-запуска-плагина
         )
     )
